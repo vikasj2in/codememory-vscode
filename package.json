@@ -1,0 +1,160 @@
+{
+  "name": "codememory",
+  "displayName": "CodeMemory",
+  "description": "AI-powered code understanding with persistent memory",
+  "version": "0.0.1",
+  "publisher": "cloudivian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vikasj2in/codememory-vscode"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "code",
+    "memory",
+    "embeddings",
+    "semantic-search"
+  ],
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codememory.indexWorkspace",
+        "title": "CodeMemory: Index Current Workspace"
+      },
+      {
+        "command": "codememory.explainCode",
+        "title": "CodeMemory: Explain Selected Code"
+      },
+      {
+        "command": "codememory.findRelated",
+        "title": "CodeMemory: Find Related Code"
+      },
+      {
+        "command": "codememory.askQuestion",
+        "title": "CodeMemory: Ask Question About Codebase"
+      },
+      {
+        "command": "codememory.showMemoryStatus",
+        "title": "CodeMemory: Show Memory Status"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "CodeMemory",
+      "properties": {
+        "codememory.llmProvider": {
+          "type": "string",
+          "default": "openai",
+          "enum": [
+            "openai",
+            "anthropic",
+            "local"
+          ],
+          "description": "LLM provider to use"
+        },
+        "codememory.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for LLM provider"
+        },
+        "codememory.localStoragePath": {
+          "type": "string",
+          "default": "",
+          "description": "Path for local vector database storage"
+        },
+        "codememory.autoIndex": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically index workspace on startup"
+        },
+        "codememory.indexFileTypes": {
+          "type": "array",
+          "default": [
+            ".ts",
+            ".js",
+            ".py",
+            ".java",
+            ".cpp",
+            ".go",
+            ".rs"
+          ],
+          "description": "File extensions to index"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codememory",
+          "title": "CodeMemory",
+          "icon": "resources/icons/memory.svg"
+        }
+      ]
+    },
+    "views": {
+      "codememory": [
+        {
+          "id": "codememory.memoryView",
+          "name": "Memory Status",
+          "contextualTitle": "CodeMemory Status"
+        },
+        {
+          "id": "codememory.contextView",
+          "name": "Current Context",
+          "contextualTitle": "Active Context"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "webpack --mode production --devtool source-map",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/uuid": "^9.0.0",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "ignore": "^5.2.4",
+    "nanoid": "^3.3.6",
+    "openai": "^4.20.0",
+    "uuid": "^9.0.0"
+  }
+}

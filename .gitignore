@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+out/
+dist/
+*.vsix
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# IDE and editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Local database/storage
+.codememory/
+codememory-db/
+*.db
+*.sqlite
+
+# Test projects
+codememory-test-project/
+test-workspace/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# API keys or tokens (extra safety)
+*apikey*
+*api_key*
+*token*
+*secret*
+!**/test/**/*token*
+
+# Personal notes
+notes.md
+TODO.md
+personal/
+
+# Lock files (optional - some prefer to commit these)
+# package-lock.json
+# yarn.lock
