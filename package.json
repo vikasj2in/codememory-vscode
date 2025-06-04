@@ -2,7 +2,7 @@
   "name": "codememory",
   "displayName": "CodeMemory",
   "description": "AI-powered code understanding with persistent memory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "cloudivian",
   "repository": {
     "type": "git",
@@ -11,18 +11,8 @@
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": [
-    "AI",
-    "Programming Languages",
-    "Other"
-  ],
-  "keywords": [
-    "ai",
-    "code",
-    "memory",
-    "embeddings",
-    "semantic-search"
-  ],
+  "categories": ["AI", "Programming Languages", "Other"],
+  "keywords": ["ai", "code", "memory", "embeddings", "semantic-search"],
   "icon": "resources/icon.png",
   "galleryBanner": {
     "color": "#1e1e1e",
@@ -53,6 +43,18 @@
       {
         "command": "codememory.showMemoryStatus",
         "title": "CodeMemory: Show Memory Status"
+      },
+      {
+        "command": "codememory.analyzeArchitecture",
+        "title": "CodeMemory: Analyze Architecture"
+      },
+      {
+        "command": "codememory.suggestRefactoring",
+        "title": "CodeMemory: Suggest Refactoring"
+      },
+      {
+        "command": "codememory.analyzeCodeQuality",
+        "title": "CodeMemory: Analyze Code Quality"
       }
     ],
     "configuration": {
@@ -62,11 +64,7 @@
         "codememory.llmProvider": {
           "type": "string",
           "default": "openai",
-          "enum": [
-            "openai",
-            "anthropic",
-            "local"
-          ],
+          "enum": ["openai", "anthropic", "local"],
           "description": "LLM provider to use"
         },
         "codememory.apiKey": {
@@ -86,15 +84,7 @@
         },
         "codememory.indexFileTypes": {
           "type": "array",
-          "default": [
-            ".ts",
-            ".js",
-            ".py",
-            ".java",
-            ".cpp",
-            ".go",
-            ".rs"
-          ],
+          "default": [".ts", ".js", ".py", ".java", ".cpp", ".go", ".rs"],
           "description": "File extensions to index"
         }
       }
@@ -135,26 +125,26 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
-    "@types/uuid": "^9.0.0",
     "@types/vscode": "^1.74.0",
+    "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@vscode/test-electron": "^2.3.9",
     "eslint": "^8.57.0",
-    "mocha": "^10.2.0",
-    "ts-loader": "^9.5.2",
     "typescript": "^5.3.3",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^5.1.4"
+    "@vscode/test-electron": "^2.3.9",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/uuid": "^9.0.0",
+    "mocha": "^10.2.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "^9.5.1"
   },
   "dependencies": {
-    "glob": "^10.3.10",
-    "ignore": "^5.2.4",
-    "nanoid": "^3.3.6",
     "openai": "^4.20.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "nanoid": "^3.3.6",
+    "ignore": "^5.2.4",
+    "glob": "^10.3.10"
   }
 }
